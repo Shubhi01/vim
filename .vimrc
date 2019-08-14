@@ -2,15 +2,24 @@ colorscheme gruvbox "awesome colorscheme
 
 syntax enable       "enable syntax processing
 
-set tabstop=2       " number of visual spaces per TAB
+set tabstop=4       " number of visual spaces per TAB
 
-set softtabstop=2   " number of spaces in tab when editing
+set softtabstop=4   " number of spaces in tab when editing
 
 set expandtab       "tabs are spaces
 
 set number          " show line number
 
 set cursorline      " highlight current line
+
+set splitright      "open new file in right vertical split
+set splitbelow     " open new file in bottom horizontol split"
+" move between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 
 filetype indent on  " load filetype-specific indent files
 
@@ -88,10 +97,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
 " " add plugins before this
  call vundle#end()
 "
 " " now (after vundle finished) it is save to turn filetype plugins on
+set rtp+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
 
@@ -100,5 +112,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
 
+" vim-go ignore vim7 warning
+let g:go_version_warning = 0
